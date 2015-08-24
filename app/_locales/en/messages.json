@@ -1,0 +1,10 @@
+{
+  "appName": {
+    "message": "Open In New Tab for LocalStorage",
+    "description": "The name of the application"
+  },
+  "appDescription": {
+    "message": "Extends Chrome Developer Tools with ability to open content of LocalStorage entry in the browser new tab",
+    "description": "The description of the application"
+  }
+}
