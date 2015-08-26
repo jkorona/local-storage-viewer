@@ -1,10 +1,10 @@
 {
   "appName": {
-    "message": "Open In New Tab for LocalStorage",
+    "message": "LocalStorage Viewer Extension",
     "description": "The name of the application"
   },
   "appDescription": {
-    "message": "Extends Chrome Developer Tools with ability to open content of LocalStorage entry in the browser new tab",
+    "message": "Provides LocalStorage panel in Chrome Developers Tool.",
     "description": "The description of the application"
   }
 }

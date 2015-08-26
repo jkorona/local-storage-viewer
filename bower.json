@@ -1,5 +1,5 @@
 {
-  "name": "open-in-new-tab-for-localstorage",
+  "name": "local-storage-viewer",
   "version": "0.0.0",
   "dependencies": {},
   "devDependencies": {
