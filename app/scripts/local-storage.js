@@ -23,7 +23,9 @@
         list.appendChild(item);
       });
 
-      document.body.appendChild(list);
+      var keysPanel = document.getElementById('keys');
+
+      keysPanel.appendChild(list);
     }
   }
 
