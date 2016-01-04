@@ -7,7 +7,7 @@
 // use this if you want to recursively match all subfolders:
 // 'test/spec/**/*.js'
 
-module.exports = function (grunt) {
+module.exports = function(grunt) {
 
   // Load grunt tasks automatically
   require('load-grunt-tasks')(grunt);
@@ -18,13 +18,31 @@ module.exports = function (grunt) {
   // Configurable paths
   var config = {
     app: 'app',
-    dist: 'dist'
+    dist: 'dist',
+    srcScript: 'app/scripts.babel'
   };
 
   grunt.initConfig({
 
     // Project settings
     config: config,
+
+    // Compiles ES6 with Babel
+    babel: {
+      options: {
+        sourceMap: true,
+        presets: ['es2015']
+      },
+      dist: {
+        files: [{
+          expand: true,
+          cwd: '<%= config.srcScript %>',
+          src: '{,*/}*.js',
+          dest: '<%= config.app %>/scripts',
+          ext: '.js'
+        }]
+      }
+    },
 
     // Watches files for changes and runs tasks based on the changed files
     watch: {
@@ -33,7 +51,7 @@ module.exports = function (grunt) {
         tasks: ['bowerInstall']
       },
       js: {
-        files: ['<%= config.app %>/scripts/{,*/}*.js'],
+        files: ['<%= config.app %>/scripts.babel/{,*/}*.js'],
         tasks: ['jshint'],
         options: {
           livereload: '<%= connect.options.livereload %>'
@@ -91,8 +109,7 @@ module.exports = function (grunt) {
 
     // Empties folders to start fresh
     clean: {
-      chrome: {
-      },
+      chrome: {},
       dist: {
         files: [{
           dot: true,
@@ -248,14 +265,12 @@ module.exports = function (grunt) {
 
     // Run some tasks in parallel to speed up build process
     concurrent: {
-      chrome: [
-      ],
+      chrome: [],
       dist: [
         'imagemin',
         'svgmin'
       ],
-      test: [
-      ]
+      test: []
     },
 
     // Auto buildnumber, exclude debug files. smart builds that event pages
@@ -295,9 +310,10 @@ module.exports = function (grunt) {
     }
   });
 
-  grunt.registerTask('debug', function () {
+  grunt.registerTask('debug', function() {
     grunt.task.run([
       'jshint',
+      'babel',
       'concurrent:chrome',
       'connect:chrome',
       'watch'
@@ -311,6 +327,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
+    'babel',
     'chromeManifest:dist',
     'useminPrepare',
     'concurrent:dist',
