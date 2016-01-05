@@ -1,5 +1,4 @@
 (function() {
-  'use strict';
   let storage = {};
 
   for (var key in localStorage) {
