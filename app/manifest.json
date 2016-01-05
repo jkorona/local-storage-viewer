@@ -6,6 +6,10 @@
   "minimum_chrome_version": "10.0",
   "devtools_page": "devtools.html",
   "default_locale": "en",
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+  "permissions": [
+    "<all_urls>"
+  ],
   "background": {
     "scripts": [
       "scripts/chromereload.js",
@@ -16,12 +20,13 @@
   "content_scripts": [
     {
       "matches": [
-        "http://*/*",
-        "https://*/*"
+        "<all_urls>"
       ],
       "js": [
         "scripts/contentscript.js"
-      ]
+      ],
+      "run_at": "document_end",
+      "all_frames": true
     }
   ]
 }

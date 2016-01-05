@@ -1,9 +1,12 @@
 'use strict';
 
-let storage = {};
+window.addEventListener('load', () => {
+  let storage = {};
 
-for (var key in localStorage) {
-  storage[key] = localStorage[key];
-}
+  for (var key in localStorage) {
+    storage[key] = localStorage[key];
+  }
 
-// alert(JSON.stringify(storage));
+  chrome.runtime.sendMessage(storage);
+});
+

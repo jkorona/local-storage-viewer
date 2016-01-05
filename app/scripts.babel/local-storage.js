@@ -1,32 +1,47 @@
-(function(document) {
+(function() {
   'use strict';
+  /*global alert: true*/
 
-  var GET_LOCAL_STORAGE_SCRIPT =
-      '(function() {' +
-        'var result = {};' +
-        'for(var key in localStorage) {' +
-          'result[key] = localStorage[key];' +
-        '}' +
-        'return result;' +
-      '})();';
+  let panel = document.body;
 
-  function displayLocalStorageContent(content, isException) {
-    if(!isException) {
-      var list = document.createElement('ul');
+  let displayLocalStorageContent = (content, panel) => {
 
-      Object.keys(content).forEach(function(key) {
-        var value = content[key];
+    try {
+      let list = document.createElement('ul');
+      let keys = Object.keys(content);
 
-        var item = document.createElement('li');
+
+      let log = '';
+
+      keys.forEach(function(key) {
+        let value = content[key];
+        let item = document.createElement('li');
         item.innerText = key + ' => ' + value;
+
+        log += key + ' => ' + value + '\n';
 
         list.appendChild(item);
       });
 
-      document.body.appendChild(list);
+      alert(list);
+
+      panel.appendChild(list);
+    } catch (err) {
+      alert(err);
     }
+  };
+
+  try {
+
+    let h1 = document.createElement('h1');
+    h1.innerText = 'dupa';
+    document.body.appendChild(h1);
+
+  } catch (err) {
+    alert(err);
   }
 
-  chrome.devtools.inspectedWindow.eval(GET_LOCAL_STORAGE_SCRIPT, displayLocalStorageContent); // jshint ignore:line
+  chrome.runtime.onMessage.addListener((request) => displayLocalStorageContent(request, panel));
 
-})(window.document);
+
+})();
