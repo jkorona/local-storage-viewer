@@ -1,14 +1,16 @@
 let displayLocalStorageContent = (content) => {
-  let list = document.createElement('ul');
+  let keysElement = document.body.querySelector('#keys');
   let keys = Object.keys(content);
 
   keys.forEach(function(key) {
-    let value = content[key];
-    let item = document.createElement('li');
-    item.innerText = key + ' => ' + value;
-    list.appendChild(item);
+    let itemElement = document.createElement('li');
+    let linkElement = document.createElement('a');
+    linkElement.innerText = key;
+
+    itemElement.appendChild(linkElement);
+    keysElement.appendChild(itemElement);
   });
-  document.body.appendChild(list);
+
 };
 
 var port = chrome.runtime.connect({name: 'ls'});
