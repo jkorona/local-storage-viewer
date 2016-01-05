@@ -1,15 +1,10 @@
-'use strict';
-
-window.addEventListener('load', () => {
+(function() {
+  'use strict';
   let storage = {};
 
   for (var key in localStorage) {
     storage[key] = localStorage[key];
   }
 
-
-  alert('content');
-
-  chrome.runtime.sendMessage(storage);
-});
-
+  return storage;
+})();

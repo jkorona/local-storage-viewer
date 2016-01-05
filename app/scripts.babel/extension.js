@@ -3,5 +3,8 @@
 chrome.devtools.panels.create(
   'LocalStorage',
   'badge.png',
-  'local-storage.html'
+  'local-storage.html',
+  function(panel) {
+
+  }
 );
