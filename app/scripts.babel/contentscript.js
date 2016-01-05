@@ -7,6 +7,9 @@ window.addEventListener('load', () => {
     storage[key] = localStorage[key];
   }
 
+
+  alert('content');
+
   chrome.runtime.sendMessage(storage);
 });
 

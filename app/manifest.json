@@ -13,8 +13,7 @@
   "background": {
     "scripts": [
       "scripts/chromereload.js",
-      "scripts/extension.js",
-      "scripts/local-storage.js"
+      "scripts/background.js"
     ]
   },
   "content_scripts": [
