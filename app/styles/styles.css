@@ -1,0 +1,50 @@
+body {
+  margin: 0;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.navigation {
+  color: #C6C6C6;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 200px;
+  background: radial-gradient(black 15%, transparent 16%) 0 0,
+  radial-gradient(black 15%, transparent 16%) 8px 8px,
+  radial-gradient(rgba(255, 255, 255, .1) 15%, transparent 20%) 0 1px,
+  radial-gradient(rgba(255, 255, 255, .1) 15%, transparent 20%) 8px 9px;
+  background-color: #282828;
+  background-size: 16px 16px;
+}
+
+.navigation ul {
+  margin: 10px 5px 0 5px;
+  list-style: none;
+  padding: 0;
+}
+
+.navigation li {
+  border-bottom: 1px solid;
+  padding: 5px;
+}
+
+.navigation a {
+  text-decoration: none;
+  padding-left: 10px;
+}
+
+.navigation li:hover {
+  border-left: 3px solid #0b97c4;
+}
+
+.navigation li:first-child a {
+}
+
+.navigation li:last-child a {
+
+}
