@@ -30,13 +30,25 @@ module.exports = function(grunt) {
     // Compiles ES6 with Babel
     babel: {
       options: {
-        sourceMap: true,
+        sourceMap: false,
         presets: ['es2015']
       },
-      dist: {
+      chrome: {
         files: [{
           expand: true,
-          cwd: '<%= config.srcScript %>',
+          cwd: '<%= config.srcScript %>/chrome',
+          src: '{,*/}*.js',
+          dest: '<%= config.app %>/scripts',
+          ext: '.js'
+        }]
+      },
+      app: {
+        options: {
+          plugins: ['transform-es2015-modules-amd']
+        },
+        files: [{
+          expand: true,
+          cwd: '<%= config.srcScript %>/app',
           src: '{,*/}*.js',
           dest: '<%= config.app %>/scripts',
           ext: '.js'

@@ -1,3 +1,9 @@
+import list from 'scripts/list';
+import _ from 'lodash';
+
+/* global alert: true */
+alert(_.capitalize(list));
+
 let displayLocalStorageContent = (content) => {
   let keysElement = document.body.querySelector('#keys');
   let keys = Object.keys(content);
